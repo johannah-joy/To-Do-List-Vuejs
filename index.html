@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/site.css"/>
+  <title>Vue To Do List</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ message1 }}</h1>
+    <input v-model="user_input" id="user_input" type="text" placeholder="new item">
+    <button v-on:click="add_input">add</button>
+    <!-- <button @click="add_input">add</button> -->
+    <br>
+
+    <h3>{{ message2 }}</h3>
+    <h5>{{ message3 }}</h5>
+    <div id="added" v-show="added.length">
+      <ul>
+        <li v-for="(add) in added" v-bind:key="add.id" v-bind:title="add.title">
+          <!-- <button v-on:click="completed_btn">complete</button> -->
+          <input type="checkbox" v-model="add.done">
+          <span :class="{ done: add.done }">{{ add.title }}</span>
+          <button v-on:click="delete_btn(add)">remove</button>
+        </li>
+      </ul>
+    </div>
+    <br>
+
+    <!-- <h3>{{ message3 }}</h3>
+    <div class="completed" v-show="completed.length">
+      <ul>
+        <li v-for="(complete in completed" v-bind:key="complete.id" v-bind:title="complete.title">{{ complete.title }}
+          
+        </li>
+      </ul>
+    </div> -->
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/site.js"></script>
+</body>
+</html>
